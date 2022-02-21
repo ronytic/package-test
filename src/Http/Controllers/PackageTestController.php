@@ -1,4 +1,5 @@
 <?php
+
 namespace ProcessMaker\Package\PackageTest\Http\Controllers;
 
 use ProcessMaker\Http\Controllers\Controller;
@@ -11,11 +12,13 @@ use URL;
 
 class PackageTestController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('package-test::index');
     }
 
-    public function fetch(Request $request){
+    public function fetch(Request $request)
+    {
         $query = Sample::query();
 
         $filter = $request->input('filter', '');
@@ -38,27 +41,30 @@ class PackageTestController extends Controller
         return new ApiCollection($response);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $sample = new Sample();
         $sample->fill($request->json()->all());
         $sample->saveOrFail();
         return $sample;
     }
 
-    public function update(Request $request, $license_generator){
+    public function update(Request $request, $license_generator)
+    {
         Sample::where('id', $license_generator)->update([
             'name' => $request->get("name"),
             'status' => $request->get("status")
-            ]);
+        ]);
         return response([], 204);
     }
 
-    public function destroy($license_generator){
+    public function destroy($license_generator)
+    {
         Sample::find($license_generator)->delete();
         return response([], 204);
     }
 
-    public function generate($license_generator){
-
+    public function generate($license_generator)
+    {
     }
 }
