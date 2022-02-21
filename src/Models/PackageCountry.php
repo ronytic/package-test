@@ -34,4 +34,11 @@ class PackageCountry extends Model
             ->get();
         return $data;
     }
+
+    public static function getAll()
+    {
+        $data = self::where('status', 'ENABLED')
+            ->get();
+        return $data;
+    }
 }

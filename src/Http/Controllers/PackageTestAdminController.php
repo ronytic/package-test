@@ -93,7 +93,7 @@ class PackageTestAdminController extends Controller
             $dataResponse = [
                 "status" => "success",
                 'data' => $country,
-                "message" => ""
+                "message" => "The request was saved successfully"
             ];
             // Return the response in json format
             return response()->json($dataResponse);
@@ -104,6 +104,29 @@ class PackageTestAdminController extends Controller
                 'message' => $e->getMessage()
             ];
             // Return the response in json format
+            return response()->json($dataResponse);
+        }
+    }
+
+    public function getregisters()
+    {
+
+        try {
+            // Get All Country Registered
+            $countries = PackageCountry::getAll();
+            // If the country was saved, return the country
+            $dataResponse = [
+                "status" => "success",
+                'data' => $countries,
+                "message" => ""
+            ];
+            // Return the response in json format
+            return response()->json($dataResponse);
+        } catch (\Exception $e) {
+            $dataResponse = [
+                "status" => "error",
+                'message' => $e->getMessage()
+            ];
             return response()->json($dataResponse);
         }
     }
