@@ -4,7 +4,7 @@ namespace ProcessMaker\Package\PackageTest\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sample extends Model
+class PackageCountry extends Model
 {
     protected $table = 'sample_skeleton';
 
