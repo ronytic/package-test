@@ -16,5 +16,6 @@ folder configured for publishing by default.
 
 mix.setPublicPath('public')
     .js('resources/js/package.js', 'js')
+    .js('resources/js/my-script.js', 'js')
     .sass('resources/sass/package.scss', 'css')
     .version();

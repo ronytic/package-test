@@ -21,7 +21,7 @@ class AddToMenus
         $menu = Menu::get('sidebar_admin')->first();
 
         // Add our menu item to the top nav
-        $menu->add(__('Skeleton'), [
+        $menu->add(__('Skeleton 2'), [
             'route' => 'package.test.admin.index',
             'icon' => 'fa-puzzle-piece',
         ]);
