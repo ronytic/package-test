@@ -130,4 +130,28 @@ class PackageTestAdminController extends Controller
             return response()->json($dataResponse);
         }
     }
+
+    public function update(Request $request, $id_country)
+    {
+        // Get the country
+        $country = $request->input('country', '');
+        $region = $request->input('region', '');
+        $countryId = $request->input('country_id', '');
+
+
+        $packageCountry = PackageCountry::find($id_country);
+        if (is_null($packageCountry)) {
+            throw new \Exception('Country not found', 1);
+        } else {
+
+            $data = [
+                'country' => $country,
+                'region' => $region,
+                'country_id' => $countryId,
+            ];
+            $packageCountry->updatePackageCountry(new Request($data));
+        }
+
+        return response()->json(['status' => 'success']);
+    }
 }

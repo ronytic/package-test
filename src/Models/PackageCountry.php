@@ -25,6 +25,17 @@ class PackageCountry extends Model
         return $country;
     }
 
+    public function updatePackageCountry(Request $request)
+    {
+        $this->country = $request->input('country', $this->country);
+        $this->region = $request->input('region', $this->region);
+        $this->country_id = $request->input('country_id', $this->country_id);
+
+        $this->save();
+
+        return $this;
+    }
+
     public static function searchCountry($countryId)
     {
         $data = self::where('status', 'ENABLED')
